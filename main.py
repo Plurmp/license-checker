@@ -89,6 +89,10 @@ async def on_message(msg):
 				title = match2.group(i + 1).strip().strip('"')
 			elif match2.group(i) == 'l':
 				link = match2.group(i + 1).strip().strip('"')
+				
+	nhen_page_match = re.match(r'(https?://nhentai\.net/g/\d{3,6}/)(\d+)', link)
+	if nhen_page_match:
+		link = nhen_page_match.group(1)
 
 	if author is None or len(author) == 0 or title is None or len(title) == 0 or link is None or len(link) == 0:
 		asyncio.create_task(
